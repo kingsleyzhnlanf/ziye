@@ -1,5 +1,7 @@
-#    新建一个库，此文件路径为   .github/workflows/ziye-sync.yml，   然后新建分支main   
-#    打开教程链接   https://www.jianshu.com/p/bb82b3ad1d11   申请PAT  （勾选时尽量全部勾选 ），填入secrets      手动运行或者定时运行即可同步
+##  ziye 新仓库自动定时同步代码 ，教程公众号文章讲过了，不废话了，地址https://mp.weixin.qq.com/s/fcI4vQHD8TNajvTML9g3AA
+
+
+
 
 name: ziye-sync
 on:
@@ -9,7 +11,7 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: sync-ziye888_JavaScript
+    types: sync-ziye888-JavaScript
 jobs:
   repo-sync:
     env:
@@ -21,11 +23,11 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: sync ziye888_JavaScript
+      - name: sync ziye888-JavaScript
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/ziye888/JavaSceipt.git"
+          source_repo: "https://github.com/ziye888/JavaScript.git"
           source_branch: "main"
           destination_branch: "main"
           github_token: ${{ secrets.PAT }}
